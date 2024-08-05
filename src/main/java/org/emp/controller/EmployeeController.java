@@ -3,6 +3,7 @@ package org.emp.controller;
 import lombok.RequiredArgsConstructor;
 import org.emp.dto.Employee;
 import org.emp.service.EmployeeService;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,6 +17,7 @@ public class EmployeeController {
     private final EmployeeService service;
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     Employee add(@RequestBody Employee employee){
         return service.add(employee);
     }
