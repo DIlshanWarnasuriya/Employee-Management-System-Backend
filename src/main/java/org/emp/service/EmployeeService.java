@@ -11,4 +11,6 @@ public interface EmployeeService {
     List<Employee> getAll();
 
     Map<String, String> delete(Integer id);
+
+    Employee update(Employee employee);
 }

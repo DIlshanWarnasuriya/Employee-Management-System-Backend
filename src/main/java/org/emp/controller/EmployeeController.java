@@ -33,4 +33,9 @@ public class EmployeeController {
     Map<String, String> delete(@PathVariable Integer id){
         return service.delete(id);
     }
+
+    @PatchMapping
+    Employee update(@RequestBody Employee employee){
+        return service.update(employee);
+    }
 }

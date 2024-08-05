@@ -44,4 +44,13 @@ public class EmployeeServiceImpl implements EmployeeService {
         }
         return Collections.singletonMap("response", "Not Found");
     }
+
+    @Override
+    public Employee update(Employee employee) {
+        if(repository.findById(employee.getId()).isPresent()){
+            EmployeeEntity entity = repository.save(mapper.convertValue(employee, EmployeeEntity.class));
+            return mapper.convertValue(entity, Employee.class);
+        }
+        return null;
+    }
 }
