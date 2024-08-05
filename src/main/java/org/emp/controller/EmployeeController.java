@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("employee")
@@ -25,5 +26,11 @@ public class EmployeeController {
     @GetMapping
     List<Employee> getAll(){
         return service.getAll();
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    Map<String, String> delete(@PathVariable Integer id){
+        return service.delete(id);
     }
 }

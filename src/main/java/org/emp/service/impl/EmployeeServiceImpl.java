@@ -9,7 +9,9 @@ import org.emp.service.EmployeeService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
@@ -32,5 +34,14 @@ public class EmployeeServiceImpl implements EmployeeService {
             list.add(mapper.convertValue(entity, Employee.class));
         }
         return  list;
+    }
+
+    @Override
+    public Map<String, String> delete(Integer id) {
+        if (repository.findById(id).isPresent()){
+            repository.deleteById(id);
+            return Collections.singletonMap("response", "deleted");
+        }
+        return Collections.singletonMap("response", "Not Found");
     }
 }
