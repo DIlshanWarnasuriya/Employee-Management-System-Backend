@@ -8,6 +8,9 @@ import org.emp.repository.EmployeeRepository;
 import org.emp.service.EmployeeService;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class EmployeeServiceImpl implements EmployeeService {
@@ -19,5 +22,15 @@ public class EmployeeServiceImpl implements EmployeeService {
     public Employee add(Employee employee) {
         EmployeeEntity entity = repository.save(mapper.convertValue(employee, EmployeeEntity.class));
         return mapper.convertValue(entity, Employee.class);
+    }
+
+    @Override
+    public List<Employee> getAll() {
+        List<Employee> list = new ArrayList<>();
+
+        for (EmployeeEntity entity : repository.findAll()) {
+            list.add(mapper.convertValue(entity, Employee.class));
+        }
+        return  list;
     }
 }
