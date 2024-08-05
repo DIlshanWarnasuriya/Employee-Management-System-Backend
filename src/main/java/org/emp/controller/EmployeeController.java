@@ -43,4 +43,9 @@ public class EmployeeController {
     Employee findById(@PathVariable Integer id){
         return service.findById(id);
     }
+
+    @GetMapping("/first-name/{firstName}")
+    Employee findByFirstName(@PathVariable String firstName){
+        return service.findByFirstName(firstName);
+    }
 }
