@@ -53,4 +53,12 @@ public class EmployeeServiceImpl implements EmployeeService {
         }
         return null;
     }
+
+    @Override
+    public Employee findById(Integer id) {
+        if (repository.findById(id).isPresent()){
+            return mapper.convertValue(repository.findById(id), Employee.class);
+        }
+        return new Employee();
+    }
 }

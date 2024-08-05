@@ -13,4 +13,6 @@ public interface EmployeeService {
     Map<String, String> delete(Integer id);
 
     Employee update(Employee employee);
+
+    Employee findById(Integer id);
 }
